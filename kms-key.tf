@@ -64,7 +64,7 @@ resource "aws_kms_key" "cloudtrail" {
 }
 
 resource "aws_kms_alias" "cloudtrail" {
-  name          = "alias/${associated_resource_name}"
+  name          = "alias/${local.associated_resource_name}"
   target_key_id = "${aws_kms_key.cloudtrail.key_id}"
 }
 

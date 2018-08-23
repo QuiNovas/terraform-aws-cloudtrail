@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "cloudtrail" {
   acl     = "log-delivery-write"
-  bucket  = "${associated_resource_name}"
+  bucket  = "${local.associated_resource_name}"
 
   lifecycle_rule {
     id = "log"
@@ -23,7 +23,7 @@ resource "aws_s3_bucket" "cloudtrail" {
 
   logging {
     target_bucket = "${var.log_bucket}"
-    target_prefix = "s3/${associated_resource_name}/"
+    target_prefix = "s3/${local.associated_resource_name}/"
   }
 }
 
