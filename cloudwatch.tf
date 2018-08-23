@@ -14,11 +14,11 @@ data "aws_iam_policy_document" "cloudwatch_assume_role" {
 
 resource "aws_iam_role" "cloudwatch_logs" {
   assume_role_policy = "${data.aws_iam_policy_document.cloudwatch_assume_role.json}"
-  name = "${associated_resource_name}"
+  name = "${local.associated_resource_name}"
 }
 
 resource "aws_cloudwatch_log_group" "cloudtrail" {
-  name              = "${associated_resource_name}"
+  name              = "${local.associated_resource_name}"
   retention_in_days = 7
 }
 
