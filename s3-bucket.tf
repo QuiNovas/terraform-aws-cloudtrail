@@ -4,7 +4,6 @@ resource "aws_s3_bucket" "cloudtrail" {
 
   lifecycle_rule {
     id = "log"
-    prefix = "/"
     enabled = true
 
     transition {
