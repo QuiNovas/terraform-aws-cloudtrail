@@ -7,12 +7,12 @@ resource "aws_s3_bucket" "cloudtrail" {
     enabled = true
 
     transition {
-      days = 30
+      days          = "${var.transition_to_glacier}"
       storage_class = "GLACIER"
     }
 
     expiration {
-      days = 2555
+      days = "${var.expiration}"
     }
   }
 
