@@ -2,9 +2,20 @@
 
 This module sets up CloudTrail for an AWS account, including writing to CloudWatch, an S3 bucket and an SNS topic.
 
+ ## Example Usage:
+```
+module "cloudtrail" {
+  source = "StratusGrid/cloudtrail/aws"
+  version = "2.0.1"
+  name_prefix = "${var.name_prefix}"
+  log_bucket = "${module.s3_bucket_logging.bucket_id}"
+  input_tags = "${local.common_tags}"
+}
+```
+
 ## Authors
 
-Module managed by Quinovas (https://github.com/QuiNovas)
+Module forked from Quinovas (https://github.com/QuiNovas)
 
 ## License
 

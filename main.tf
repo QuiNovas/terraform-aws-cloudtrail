@@ -11,8 +11,11 @@ resource "aws_cloudtrail" "cloudtrail" {
   name                          = "${local.trail_name}"
   s3_bucket_name                = "${aws_s3_bucket.cloudtrail.id}"
   sns_topic_name                = "${aws_sns_topic.cloudtrail.name}"
-
-  tags {
-    Name = "${local.trail_name}"
-  }
+  
+  tags = "${merge(
+    var.input_tags,
+    map(
+      "Name", "${local.trail_name}"
+    )
+  )}"
 }
