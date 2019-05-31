@@ -27,7 +27,7 @@ variable "log_bucket" {
 }
 
 variable "transition_to_glacier" {
-  default     = 180
+  default     = 366
   description = "The number of days to wait before transitioning an object to Glacier"
   type        = "string"
 }
