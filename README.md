@@ -6,7 +6,7 @@ This module sets up CloudTrail for an AWS account, including writing to CloudWat
 ```
 module "cloudtrail" {
   source = "StratusGrid/cloudtrail/aws"
-  version = "2.0.2"
+  version = "2.0.3"
   name_prefix = "${var.name_prefix}"
   log_bucket = "${module.s3_bucket_logging.bucket_id}"
   input_tags = "${local.common_tags}"
