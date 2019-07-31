@@ -18,7 +18,7 @@ variable "input_tags" {
 variable "expiration" {
   default     = 2557
   description = "The number of days to wait before expiring an object"
-  type        = string
+  type        = number
 }
 
 variable "log_bucket" {
@@ -29,6 +29,6 @@ variable "log_bucket" {
 variable "transition_to_glacier" {
   default     = 366
   description = "The number of days to wait before transitioning an object to Glacier"
-  type        = string
+  type        = number
 }
 
