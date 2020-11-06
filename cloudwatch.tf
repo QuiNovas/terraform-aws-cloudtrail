@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "cloudwatch_logs_role" {
       "logs:PutLogEvents",
     ]
     resources = [
-      aws_cloudwatch_log_group.cloudtrail.arn,
+      "${aws_cloudwatch_log_group.cloudtrail.arn}:*",
     ]
     sid = "AWSCloudTrailLogging"
   }
