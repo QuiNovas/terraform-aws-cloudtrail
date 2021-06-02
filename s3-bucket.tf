@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "cloudtrail" {
     target_bucket = var.log_bucket
     target_prefix = "s3/${local.associated_resource_name}/"
   }
-  tags = merge(var.input_tags, {})
+  tags = merge(local.common_tags, {})
 }
 
 data "aws_iam_policy_document" "cloudtrail_s3" {
