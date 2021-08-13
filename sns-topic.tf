@@ -1,5 +1,6 @@
 resource "aws_sns_topic" "cloudtrail" {
   name = local.associated_resource_name
+  tags = var.tags
 }
 
 data "aws_iam_policy_document" "cloudtrail_sns" {

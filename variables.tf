@@ -20,3 +20,8 @@ variable "transition_to_glacier" {
   type        = number
 }
 
+variable "tags" {
+  description = "(Optional) A mapping of tags to assign to the resources"
+  type        = map(string)
+  default     = {}
+}

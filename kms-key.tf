@@ -62,6 +62,7 @@ resource "aws_kms_key" "cloudtrail" {
   description         = "cloudtrail log key for ${local.trail_name}"
   enable_key_rotation = true
   policy              = data.aws_iam_policy_document.cloudtrail_kms.json
+  tags                = var.tags
 }
 
 resource "aws_kms_alias" "cloudtrail" {
