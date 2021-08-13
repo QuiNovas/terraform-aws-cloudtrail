@@ -90,7 +90,6 @@ data "aws_iam_policy_document" "cloudtrail_s3" {
     ]
     sid = "DenyUnsecuredTransport"
   }
-  tags = var.tags
 }
 
 resource "aws_s3_bucket_policy" "cloudtrail" {
