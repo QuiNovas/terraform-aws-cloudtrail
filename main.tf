@@ -10,8 +10,8 @@ resource "aws_cloudtrail" "cloudtrail" {
   s3_bucket_name                = aws_s3_bucket.cloudtrail.id
   sns_topic_name                = aws_sns_topic.cloudtrail.name
 
-  tags = {
+  tags = merge(var.tags, {
     Name = local.trail_name
-  }
+  })
 }
 
