@@ -11,7 +11,7 @@ resource "aws_cloudtrail" "cloudtrail" {
   sns_topic_name                = aws_sns_topic.cloudtrail.name
 
   tags = merge(
-    var.input_tags,
+    local.common_tags,
     {
       "Name" = local.trail_name
     },
