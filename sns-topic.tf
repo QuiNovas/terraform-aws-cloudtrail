@@ -1,5 +1,6 @@
 resource "aws_sns_topic" "cloudtrail" {
-  name = local.associated_resource_name
+  name              = local.associated_resource_name
+  kms_master_key_id = aws_kms_key.sns.id
 }
 
 data "aws_iam_policy_document" "cloudtrail_sns" {
@@ -17,6 +18,29 @@ data "aws_iam_policy_document" "cloudtrail_sns" {
       aws_sns_topic.cloudtrail.arn,
     ]
     sid = "CloudTrail SNS Policy"
+  }
+  statement {
+    actions = [
+      "sns:Publish",
+    ]
+    condition {
+      test = "Bool"
+      values = [
+        "false",
+      ]
+      variable = "aws:SecureTransport"
+    }
+    effect = "Deny"
+    principals {
+      identifiers = [
+        "*",
+      ]
+      type = "AWS"
+    }
+    resources = [
+      aws_sns_topic.cloudtrail.arn,
+    ]
+    sid = "DenyUnsecuredTransport"
   }
 }
 

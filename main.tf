@@ -10,6 +10,19 @@ resource "aws_cloudtrail" "cloudtrail" {
   s3_bucket_name                = aws_s3_bucket.cloudtrail.id
   sns_topic_name                = aws_sns_topic.cloudtrail.name
 
+  dynamic "event_selector" {
+    for_each = var.event_selectors
+    content {
+      include_management_events = event_selector.value["include_management_events"]
+      read_write_type           = event_selector.value["read_write_type"]
+
+      data_resource {
+        type   = event_selector.value["data_resource_type"]
+        values = event_selector.value["data_resource_values"]
+      }
+    }
+  }
+
   tags = merge(
     local.common_tags,
     {
