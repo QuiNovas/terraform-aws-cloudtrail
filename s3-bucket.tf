@@ -1,9 +1,11 @@
+#tfsec:ignore:aws-s3-block-public-acls tfsec:ignore:aws-s3-block-public-policy tfsec:ignore:aws-s3-enable-bucket-encryption tfsec:ignore:aws-s3-ignore-public-acls tfsec:ignore:aws-s3-no-public-buckets tfsec:ignore:aws-s3-specify-public-access-block
 resource "aws_s3_bucket" "cloudtrail" {
   bucket = local.associated_resource_name
 
   tags = merge(local.common_tags, {})
 }
 
+#tfsec:ignore:aws-s3-enable-versioning -- Ignore warning on versioning
 resource "aws_s3_bucket_versioning" "resource" {
   bucket = aws_s3_bucket.cloudtrail.id
 

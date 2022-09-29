@@ -17,11 +17,13 @@ resource "aws_iam_role" "cloudwatch_logs" {
   name               = local.associated_resource_name
 }
 
+#tfsec:ignore:aws-cloudwatch-log-group-customer-key -- Ignores warning on Log group not encrypted
 resource "aws_cloudwatch_log_group" "cloudtrail" {
   name              = local.associated_resource_name
   retention_in_days = 7
 }
 
+#tfsec:ignore:aws-iam-no-policy-wildcards
 data "aws_iam_policy_document" "cloudwatch_logs_role" {
   statement {
     actions = [
@@ -40,4 +42,3 @@ resource "aws_iam_role_policy" "cloudwatch_logs" {
   policy = data.aws_iam_policy_document.cloudwatch_logs_role.json
   role   = aws_iam_role.cloudwatch_logs.id
 }
-
