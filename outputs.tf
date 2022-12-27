@@ -23,3 +23,7 @@ output "sns_arn" {
   value       = aws_sns_topic.cloudtrail.arn
 }
 
+output "cloudwatch_logs_arn" {
+  description = "The ARN of the cloudwatch log group"
+  value       = aws_cloudwatch_log_group.cloudtrail.arn
+}
