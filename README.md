@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# Terraform AWS Template
+# terraform-aws-cloudtrail
 
 GitHub: [StratusGrid/terraform-aws-cloudtrail](https://github.com/StratusGrid/terraform-aws-cloudtrail)
 
@@ -10,10 +10,12 @@ This module sets up CloudTrail for an AWS account, including writing to CloudWat
 ```hcl
 module "cloudtrail" {
   source = "StratusGrid/cloudtrail/aws"
-  version = "3.0.0"
-  
+  # StratusGrid recommends pinning every module to a specific version
+  version = "x.x.x"
+
   name_prefix = var.name_prefix
   log_bucket  = module.s3_bucket_logging.bucket_id
+
   input_tags  = merge(local.common_tags, {})
 }
 ```
@@ -24,6 +26,7 @@ module "cloudtrail" {
 
 | Name | Version |
 |------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 
 ## Resources
@@ -80,8 +83,5 @@ module "cloudtrail" {
 - Wesley Kirkland [wesleykirklandsg](https://github.com/wesleykirklandsg)
 - Module originally forked from [Quinovas](https://github.com/QuiNovas)
 
-<span style="color:red">Notes</span>
-
-- Manual changes to the README will be overwritten when the documentation is updated. To update the documentation, run `terraform-docs -c .config/.terraform-docs.yml .`
-- TF Docs in 0.16.0 is bugged and doesn't handle indentation, reference files in `examples/*` will need to be used for indentention.
+<span style="color:red">Note:</span> Manual changes to the README will be overwritten when the documentation is updated. To update the documentation, run `terraform-docs -c .config/.terraform-docs.yml .`
 <!-- END_TF_DOCS -->

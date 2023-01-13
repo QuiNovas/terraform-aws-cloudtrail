@@ -5,7 +5,7 @@ formatter: markdown table
 name: terraform-aws-cloudtrail
 
 content: |-
-  # Terraform AWS Template
+  # terraform-aws-cloudtrail
 
   GitHub: [StratusGrid/terraform-aws-cloudtrail](https://github.com/StratusGrid/terraform-aws-cloudtrail)
 
@@ -33,17 +33,15 @@ content: |-
   - Wesley Kirkland [wesleykirklandsg](https://github.com/wesleykirklandsg)
   - Module originally forked from [Quinovas](https://github.com/QuiNovas)
 
-  <span style="color:red">Notes</span>
-
-  - Manual changes to the README will be overwritten when the documentation is updated. To update the documentation, run `terraform-docs -c .config/.terraform-docs.yml .`
-  - TF Docs in 0.16.0 is bugged and doesn't handle indentation, reference files in `examples/*` will need to be used for indentention.
+  <span style="color:red">Note:</span> Manual changes to the README will be overwritten when the documentation is updated. To update the documentation, run `terraform-docs -c .config/.terraform-docs.yml .`
 
 sections:
   show:
-    - requirements
     - resources
     - inputs
     - outputs
+    - providers
+    - requirements
 
 sort:
   enabled: true

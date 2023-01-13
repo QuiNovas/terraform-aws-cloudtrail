@@ -5,12 +5,11 @@ resource "aws_s3_bucket" "cloudtrail" {
   tags = merge(local.common_tags, {})
 }
 
-#tfsec:ignore:aws-s3-enable-versioning -- Ignore warning on versioning
 resource "aws_s3_bucket_versioning" "resource" {
   bucket = aws_s3_bucket.cloudtrail.id
 
   versioning_configuration {
-    status     = "Disabled"
+    status     = "Enabled"
     mfa_delete = var.enable_mfa_delete_cloudtrail_bucket == true ? "Enabled" : "Disabled"
   }
 }
