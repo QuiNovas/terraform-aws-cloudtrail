@@ -6,11 +6,6 @@ resource "aws_s3_bucket" "cloudtrail" {
   }
 }
 
-resource "aws_s3_bucket_acl" "cloudtrail" {
-  bucket = aws_s3_bucket.cloudtrail.id
-  acl    = "log-delivery-write"
-}
-
 resource "aws_s3_bucket_logging" "cloudtrail" {
   bucket        = aws_s3_bucket.cloudtrail.id
   target_bucket = var.log_bucket
